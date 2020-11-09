@@ -1,5 +1,5 @@
 """
-Tic Tac Toe Player
+T ic Tac Toe Player
 """
 
 import math
@@ -147,12 +147,13 @@ def min_value(board, Max, Min):
     value = math.inf
     for action in actions(board):
         m_value, _ = max_value(result(board, action), Max, Min)
-        Max = max(Max, m_value)
+        Min = min(Min, m_value)
         if m_value < value:
             value = m_value
             optimal_action = action
         if Max >= Min:
             break
+    print("min_value: ", value, optimal_action, "Max:", Max, "Min:", Min)
     return [value, optimal_action]
 
 def max_value(board, Max, Min):
@@ -161,9 +162,11 @@ def max_value(board, Max, Min):
     value = -math.inf
     for action in actions(board):
         m_value, _ = min_value(result(board, action), Max, Min)
+        Max = max(Max, m_value)
         if m_value > value:
             value = m_value
             optimal_action = action
         if Max >= Min:
             break
+    print("max_value: ", value, optimal_action, "Max:", Max, "Min:", Min)
     return [value, optimal_action]
