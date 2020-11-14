@@ -136,12 +136,13 @@ def iterate_pagerank(corpus, damping_factor):
                 if page in corpus[pg]:
                     second_half += (PageRank[pg] / len(corpus[pg]))
                 elif not corpus[pg]:
-                    second_half += 1 / len(all_pages)
+                    second_half += PageRank[pg] / len(all_pages)
 
             full = first_half + damping_factor * second_half
             if abs(PageRank[page] - full) > 0.001:
+                PageRank[page] = full
                 i = True
-                PageRank[page] = full 
+    
 
     return PageRank
 
