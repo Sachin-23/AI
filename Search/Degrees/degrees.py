@@ -107,7 +107,7 @@ def shortest_path(source, target):
                     path.append((node.action, node.state))
                     node = node.parent
                 return path[::-1]
-            if not frontier.contains_state(neighbor_node) and current.state not in explored:
+            if not frontier.contains_state(neighbor_node) and neighbor_node.state not in explored:
                 frontier.add(neighbor_node)
     return None
 
