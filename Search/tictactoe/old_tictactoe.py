@@ -1,7 +1,6 @@
 """
 Tic Tac Toe Player
 """
-# todo profiling with and without AB pruning.
 
 import math
 from copy import deepcopy
@@ -119,55 +118,40 @@ def minimax(board):
     """
     Returns the optimal action for the current player on the board.
     """
-    '''
-        profiling
-    '''
 
-    alpha = float("-inf")
-    beta = float("inf")
     current_player = player(board)
+    #print(current_player)
     if current_player == X:
-        return max_value(board, alpha, beta)[1]
+        return max_value(board)[1]
     elif current_player == O:
-        return min_value(board, alpha, beta)[1]
+        return min_value(board)[1]
     return None
 
 
-def max_value(board, alpha, beta):
-    """
-    Returns the optimal action for X player.
-    """
+def max_value(board):
     v = (float("-inf"), ())
 
     if terminal(board):
         return (utility(board), ())
 
     for action in actions(board):
-        if v[0] <= beta:
-            m = min_value(result(board, action), alpha, beta)[0]
-            #print("Max", v, m, type(m))
-            v = max(v, (m, action), \
-                    key = lambda x: x[0])
-            alpha = max(v[0], alpha)
+        m = min_value(result(board, action))[0]
+        #print("Max", v, m, type(m))
+        v = max(v, (m, action), \
+                key = lambda x: x[0])
     return v
 
  
-def min_value(board, alpha, beta):
-    """
-    Returns the optimal action for X player.
-    """
+def min_value(board):
     v = (float("inf"), ())
 
     if terminal(board):
         return (utility(board), ())
 
     for action in actions(board):
-        if v[0] > alpha: 
-            m = max_value(result(board, action), alpha, beta)[0]
-            #print("Min", v, m, type(m))
-            v = min(v, (m, action), \
-                    key = lambda x: x[0])
-            beta = min(v[0], beta)
+        m = max_value(result(board, action))[0]
+        #print("Min", v, m, type(m))
+        v = min(v, (m, action), \
+                key = lambda x: x[0])
     return v
-
 

@@ -112,7 +112,19 @@ while True:
         if user != player and not game_over:
             if ai_turn:
                 time.sleep(0.5)
+
+                import cProfile, pstats, io
+                from pstats import SortKey
+                pr = cProfile.Profile()
+                pr.enable()
                 move = ttt.minimax(board)
+                pr.disable()
+                s = io.StringIO()
+                sortby = SortKey.CUMULATIVE
+                ps = pstats.Stats(pr, stream=s).sort_stats(sortby)
+                ps.print_stats()
+                print(s.getvalue())
+
                 board = ttt.result(board, move)
                 ai_turn = False
             else:
