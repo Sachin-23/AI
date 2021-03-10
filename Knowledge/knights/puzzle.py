@@ -12,45 +12,50 @@ CKnave = Symbol("C is a Knave")
 # Puzzle 0
 # A says "I am both a knight and a knave."
 knowledge0 = And(
-
+    # TODO
     Or(AKnight, AKnave),
+
     Not(And(AKnight, AKnave)),
 
     Implication(AKnight, And(AKnight, AKnave)),
-    Implication(AKnight, Not(And(AKnight, AKnave))),
+    Implication(AKnave, Not(And(AKnight, AKnave)))
 )
+
 
 # Puzzle 1
 # A says "We are both knaves."
 # B says nothing.
 knowledge1 = And(
-
+    # TODO
     Or(AKnight, AKnave),
-    Not(And(AKnight, AKnave)),
     Or(BKnight, BKnave),
+    Or(CKnight, CKnave),
+
+    Not(And(AKnight, AKnave)),
     Not(And(BKnight, BKnave)),
+    Not(And(CKnight, CKnave)),
 
     Implication(AKnight, And(AKnave, BKnave)),
-    Implication(AKnave, Not(And(AKnave, BKnave))),
 
+    Implication(AKnave, Not(And(AKnave, BKnave)))
 )
 
 # Puzzle 2
 # A says "We are the same kind."
 # B says "We are of different kinds."
 knowledge2 = And(
-
+    # TODO
     Or(AKnight, AKnave),
-    Not(And(AKnight, AKnave)),
     Or(BKnight, BKnave),
+
+    Not(And(AKnight, AKnave)),
     Not(And(BKnight, BKnave)),
 
-
-    Implication(AKnight, Or(And(AKnave, BKnave), And(AKnight, BKnight))),    
-    Implication(AKnave, Not(Or(And(AKnave, BKnave), And(AKnight, BKnight)))),
-
-    Implication(BKnight, Or(And(AKnave, BKnight), And(AKnight, BKnave))),    
-    Implication(BKnave, Not(Or(And(AKnave, BKnight), And(AKnight, BKnave)))),
+    Biconditional(AKnight, And(AKnight, BKnight)),
+    Biconditional(AKnave, Not((And(AKnave, BKnave)))),
+    
+    Biconditional(BKnight, And(AKnave, BKnight)),
+    Biconditional(BKnave, Not(And(AKnave, BKnight))),
 )
 
 # Puzzle 3
@@ -59,22 +64,22 @@ knowledge2 = And(
 # B says "C is a knave."
 # C says "A is a knight."
 knowledge3 = And(
-
+    # TODO
     Or(AKnight, AKnave),
-    Not(And(AKnight, AKnave)),
     Or(BKnight, BKnave),
-    Not(And(BKnight, BKnave)),
     Or(CKnight, CKnave),
+
+    Not(And(AKnight, AKnave)),
+    Not(And(BKnight, BKnave)),
     Not(And(CKnight, CKnave)),
 
-    Implication(AKnight, Or(AKnight, AKnave)),
-    Implication(AKnave, Not(Or(AKnight, AKnave))),
+    Biconditional(AKnight, Or(AKnight, AKnave)),
 
-    Implication(BKnight, AKnight),
-    Implication(BKnave, Not(AKnight)),
+    Implication(BKnight,  And(Biconditional(AKnave, AKnave), Biconditional(AKnight, Not(AKnave)))),
+    Implication(BKnave, Biconditional(Not(AKnave), Not(AKnave))),
 
-    Implication(BKnight, CKnight),
-    Implication(BKnave, Not(CKnight)),
+    Implication(BKnight, CKnave),
+    Implication(BKnave, Not(CKnave)),
 
     Implication(CKnight, AKnight),
     Implication(CKnave, Not(AKnight))
