@@ -106,7 +106,7 @@ class Sentence():
         Returns the set of all cells in self.cells known to be mines.
         """
         if self.count == len(self.cells):
-            return self.cells
+            return set(self.cells)
         return set()
 
     def known_safes(self):
@@ -114,7 +114,7 @@ class Sentence():
         Returns the set of all cells in self.cells known to be safe.
         """
         if self.count == 0:
-            return self.cells
+            return set(self.cells)
         return set()
 
     def mark_mine(self, cell):
@@ -189,12 +189,12 @@ class MinesweeperAI():
             5) add any new sentences to the AI's knowledge base
                if they can be inferred from existing knowledge
         """
-        # Mark the cell as move made
+        # Mark the cell as move made.
         self.moves_made.add(cell)
         # add it to safe 
         self.mark_safe(cell)
 
-        # get neighbouring cells
+        # get neighbour cells.
         n_cells = set() # Initialize neighbouring cells
         for i in range(cell[0] - 1, cell[0] + 2):
             for j in range(cell[1] - 1, cell[1] + 2):
@@ -202,34 +202,34 @@ class MinesweeperAI():
                     continue
 
                 elif 0 <= i < self.height and 0 <= j < self.width:
-                    n_cells.add((i, j))
+                    if (i, j) not in self.moves_made:
+                        n_cells.add((i, j))
 
-        # Create new sentence and it to the knowledge base
-        new_s = Sentence(n_cells, count) # New Sentence
-        self.knowledge.append(new_s)
+        # Create new sentence and add it to the knowledge base.
+        self.knowledge.append(Sentence(n_cells, count)) 
 
-        # Add safes or mines based on knowledge
+        # Add safes or mines based on knowledge base.
         for sentence in self.knowledge:
-            safes = set(sentence.known_safes())
+            safes = sentence.known_safes()
             for cell in safes:
-                self.safes.add(cell)
                 self.mark_safe(cell)
-            mines = set(sentence.known_mines())
+
+            mines = sentence.known_mines()
             for cell in mines:
-                self.mines.add(cell)
                 self.mark_mine(cell)
 
         knowledge = self.knowledge.copy()
         
         for s1 in knowledge:
             for s2 in knowledge:
-                if s1 and s2:
+                if s1 and s2 and s1 != s2:
                     i_s = None # Inferred Sentence
                     if s1.cells.issuperset(s2.cells):
                         i_s = Sentence(s1.cells - s2.cells, s1.count - s2.count)
                     elif s2.cells.issuperset(s1.cells): 
                         i_s = Sentence(s2.cells - s1.cells, s2.count - s1.count)
                     if i_s and i_s.cells and i_s not in self.knowledge:
+                        print("Inferred Sentence", i_s)
                         self.knowledge.append(i_s)
 
         empty = []
@@ -239,13 +239,21 @@ class MinesweeperAI():
 
         for i in empty:
             self.knowledge.remove(i)
+
+        print("Knowledge: ")
         for i in self.knowledge:
-            print(i, end="")
-        '''
-        print("Safes", end=" ")
+            print(i, end=" | ")
+
+        print("\nSafes: ")
         for i in self.safes:
-            print(i, end="")
-        '''
+            if i not in self.moves_made:
+                print(i, end=" | ")
+
+        print("\nMines")
+        for i in self.mines:
+            print(i, end=" | ")
+
+        print("\n" + 80*"-")
 
         # TODO
         '''
@@ -263,8 +271,8 @@ class MinesweeperAI():
         """
         for i in range(0, self.height):
             for j in range(0, self.width):
-                if (i, j) in self.safes and (i, j) not in self.mines \
-                        and (i, j) not in self.moves_made:
+                if (i, j) in self.safes and not((i, j) in self.mines \
+                        or (i, j) in self.moves_made):
                     return (i, j)
         return None
 
@@ -275,7 +283,8 @@ class MinesweeperAI():
             1) have not already been chosen, and
             2) are not known to be mines
         """
-        while True:
+        while len(self.mines) < 8:
             i, j = random.randrange(0, 8), random.randrange(0, 8)
             if (i, j) not in self.moves_made and (i, j) not in self.mines:
                 return (i, j)
+        return None
