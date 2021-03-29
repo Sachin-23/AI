@@ -240,6 +240,7 @@ class MinesweeperAI():
         for i in empty:
             self.knowledge.remove(i)
 
+        '''
         print("Knowledge: ")
         for i in self.knowledge:
             print(i, end=" | ")
@@ -254,10 +255,6 @@ class MinesweeperAI():
             print(i, end=" | ")
 
         print("\n" + 80*"-")
-
-        # TODO
-        '''
-        Imporvise Algorithm by checking the below function and profile also optimize the code
         '''
 
     def make_safe_move(self):
