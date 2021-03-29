@@ -30,11 +30,9 @@ knowledge1 = And(
     # Puzzle Description
     Or(AKnight, AKnave),
     Or(BKnight, BKnave),
-    Or(CKnight, CKnave),
 
     Not(And(AKnight, AKnave)),
     Not(And(BKnight, BKnave)),
-    Not(And(CKnight, CKnave)),
 
     # A says "We are both knaves."
     Implication(AKnight, And(AKnave, BKnave)),
@@ -78,8 +76,8 @@ knowledge3 = And(
     Not(And(CKnight, CKnave)),
 
     # A says either "I am a knight." or "I am a knave.", but you don't know which.
-    Implication(AKnight, Or(AKnight, BKnight)),
-    Implication(AKnave, Not(Or(AKnight, BKnight))),
+    Implication(AKnight, Or(AKnight, AKnave)),
+    Implication(AKnave, Not(Or(AKnight, AKnave))),
 
     #Implication(BKnight,  And(Biconditional(AKnave, AKnave), Biconditional(AKnight, Not(AKnave)))),
     #Implication(BKnave, And(Implication(AKnight, AKnave), Implication(AKnave, AKnave))), 

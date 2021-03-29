@@ -283,8 +283,10 @@ class MinesweeperAI():
             1) have not already been chosen, and
             2) are not known to be mines
         """
-        while len(self.mines) < 8:
+        k = 64
+        while k:
             i, j = random.randrange(0, 8), random.randrange(0, 8)
             if (i, j) not in self.moves_made and (i, j) not in self.mines:
                 return (i, j)
+            k -= 1
         return None
