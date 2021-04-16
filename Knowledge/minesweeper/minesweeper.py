@@ -218,8 +218,10 @@ class MinesweeperAI():
             for cell in mines:
                 self.mark_mine(cell)
 
-        knowledge = self.knowledge.copy()
         
+        # Inference new sentence.
+        knowledge = self.knowledge.copy()
+
         for s1 in knowledge:
             for s2 in knowledge:
                 if s1 and s2 and s1 != s2:
@@ -229,9 +231,10 @@ class MinesweeperAI():
                     elif s2.cells.issuperset(s1.cells): 
                         i_s = Sentence(s2.cells - s1.cells, s2.count - s1.count)
                     if i_s and i_s.cells and i_s not in self.knowledge:
-                        print("Inferred Sentence", i_s)
+                        #print("Inferred Sentence", i_s)
                         self.knowledge.append(i_s)
 
+        # Remove any sentence with empty cells.
         empty = []
         for i in self.knowledge:
             if not i.cells:
