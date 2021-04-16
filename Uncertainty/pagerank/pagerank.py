@@ -85,7 +85,9 @@ def sample_pagerank(corpus, damping_factor, n):
     pages = list(corpus.keys())
     page_rank = {page: 0 for page in pages}
 
+    # Start with random page.
     page = random.choice(pages)
+    # For each page get transaction model then select next page based on transition model.
     for i in range(n):
         page_rank[page] += 1
         trans_model = transition_model(corpus, page, damping_factor)
