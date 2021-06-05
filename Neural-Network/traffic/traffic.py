@@ -102,7 +102,7 @@ def get_model():
 
             tf.keras.layers.Dense(256, activation="relu"),
 
-            tf.keras.layers.Dropout(0.5),
+            tf.keras.layers.Dropout(0.4),
 
             tf.keras.layers.Dense(NUM_CATEGORIES, activation="softmax")
         ])
