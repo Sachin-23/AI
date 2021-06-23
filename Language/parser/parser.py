@@ -15,13 +15,12 @@ V -> "smiled" | "tell" | "were"
 """
 
 NONTERMINALS = """
-S -> NP VP | ConjP
-AdjP -> Adj NP
-AdvP -> V Adv | Adv V | N Adv
-PP -> P NP | PP PP
-NP -> AdjP | Det AdjP | Det N | Det AdvP | N V | N 
-VP -> V | V NP | NP AdvP | AdvP NP | V PP | V NP PP | NP PP
-ConjP -> VP Conj NP | VP Conj VP | NP ConjP 
+S -> NP VP | VP NP | S Conj S
+PP -> P N | P NP | P PP
+AdjP -> Adj AdjP | Adj N
+DetP -> Det AdjP | Det N 
+NP -> DetP PP | PP | DetP | N 
+VP -> Adv VP | VP Adv | V NP | V
 """
 
 grammar = nltk.CFG.fromstring(NONTERMINALS + TERMINALS)
@@ -55,7 +54,6 @@ def main():
     # Print each tree with noun phrase chunks
     for tree in trees:
         tree.pretty_print()
-
         print("Noun Phrase Chunks")
         for np in np_chunk(tree):
             print(" ".join(np.flatten()))

@@ -1,0 +1,249 @@
+-------------1-----------
+        S     
+   _____|___   
+  NP        VP
+  |         |  
+  N         V 
+  |         |  
+holmes     sat
+
+Noun Phrase Chunks
+holmes
+-------------2------------
+            S               
+   _________|___             
+  |             VP          
+  |      _______|___         
+  |     |           NP      
+  |     |           |        
+  NP    |          DetP     
+  |     |        ___|____    
+  N     V      Det       N  
+  |     |       |        |   
+holmes lit      a       pipe
+
+Noun Phrase Chunks
+holmes
+a pipe
+-------------3------------
+             S                                  
+  ___________|________                           
+ |                    VP                        
+ |      ______________|___                       
+ |     |                  NP                    
+ |     |          ________|__________            
+ NP    |        DetP                 PP         
+ |     |      ___|____          _____|_____      
+ N     V    Det       N        P           N    
+ |     |     |        |        |           |     
+ we arrived the      day     before     thursday
+
+Noun Phrase Chunks
+we
+the day before thursday
+             S                                  
+  ___________|________                           
+ |                    VP                        
+ |      ______________|___                       
+ |     |                  NP                    
+ |     |          ________|__________            
+ |     |         |                   PP         
+ |     |         |              _____|_____      
+ NP    |        DetP           |           NP   
+ |     |      ___|____         |           |     
+ N     V    Det       N        P           N    
+ |     |     |        |        |           |     
+ we arrived the      day     before     thursday
+
+Noun Phrase Chunks
+we
+thursday
+-------------4------------
+                        S                                      
+             ___________|___________________________            
+            S                              |        |          
+   _________|___                           |        |           
+  |             VP                         |        |          
+  |      _______|___                       |        |           
+  |     |           NP                     |        |          
+  |     |           |                      |        |           
+  |     |           PP                     |        |          
+  |     |    _______|___                   |        |           
+  |     |   |           NP                 |        |          
+  |     |   |           |                  |        |           
+  |     |   |          DetP                |        S          
+  |     |   |    _______|____              |     ___|_____      
+  NP    |   |   |           AdjP           |    NP        VP   
+  |     |   |   |        ____|______       |    |         |     
+  N     V   P  Det     Adj          N     Conj  N         V    
+  |     |   |   |       |           |      |    |         |     
+holmes sat  in the     red       armchair and   he     chuckled
+
+Noun Phrase Chunks
+holmes
+the red armchair
+he
+-------------5------------
+                     S                                  
+      _______________|_________                          
+     |                         VP                       
+     |                _________|_______                  
+     |               |                 NP               
+     |               |                 |                 
+     NP              |                DetP              
+     |               |      ___________|_______          
+    DetP             |     |                  AdjP      
+  ___|_______        |     |            _______|_____    
+Det          N       V    Det         Adj            N  
+ |           |       |     |           |             |   
+ my      companion smiled  an     enigmatical      smile
+
+Noun Phrase Chunks
+my companion
+an enigmatical smile
+-------------6------------
+                 S                 
+   ______________|___               
+  |                  VP            
+  |        __________|___           
+  |       |              NP        
+  |       |              |          
+  NP      |              PP        
+  |       |           ___|_____     
+  N       V          P         N   
+  |       |          |         |    
+holmes chuckled      to     himself
+
+Noun Phrase Chunks
+holmes
+to himself
+                 S                 
+   ______________|___               
+  |                  VP            
+  |        __________|___           
+  |       |              NP        
+  |       |              |          
+  |       |              PP        
+  |       |           ___|_____     
+  NP      |          |         NP  
+  |       |          |         |    
+  N       V          P         N   
+  |       |          |         |    
+holmes chuckled      to     himself
+
+Noun Phrase Chunks
+holmes
+himself
+-------------7------------
+                                   S                                      
+            _______________________|_____________                          
+           |                       |             S                        
+           |                       |     ________|_______                  
+           |                       |    |                VP               
+           |                       |    |             ___|_____________    
+           S                       |    |            VP                |  
+  _________|____                   |    |    ________|___              |   
+ |              VP                 |    |   |            NP            |  
+ |     _________|___               |    |   |            |             |   
+ |    |             VP             |    |   |            PP            |  
+ |    |     ________|___           |    |   |     _______|___          |   
+ |    |    |            NP         |    |   |    |           NP        |  
+ |    |    |            |          |    |   |    |           |         |   
+ NP   |    |           DetP        |    NP  |    |          DetP       |  
+ |    |    |         ___|____      |    |   |    |        ___|____     |   
+ N   Adv   V       Det       N    Conj  N   V    P      Det       N   Adv 
+ |    |    |        |        |     |    |   |    |       |        |    |   
+she never said      a       word until  we were  at     the      door here
+
+Noun Phrase Chunks
+she
+a word
+we
+the door
+-------------8------------
+                     S                    
+         ____________|________             
+        S            |        S           
+   _____|___         |     ___|___         
+  |         VP       |    |       NP      
+  |      ___|___     |    |       |        
+  NP    VP      |    |    VP     DetP     
+  |     |       |    |    |    ___|____    
+  N     V      Adv  Conj  V  Det       N  
+  |     |       |    |    |   |        |   
+holmes sat     down and  lit his      pipe
+
+Noun Phrase Chunks
+holmes
+his pipe
+-------------9------------
+                                         S                                                      
+      ___________________________________|_________________________                              
+     |                                          |                  S                            
+     |                                          |          ________|_______                      
+     S                                          |         |                NP                   
+  ___|_________                                 |         |                |                     
+ |             VP                               |         |                PP                   
+ |    _________|__________                      |         |         _______|_____                
+ |   |                    NP                    |         |        |             NP             
+ |   |          __________|________             |         |        |             |               
+ |   |        DetP                 |            |         VP       |            DetP            
+ |   |    _____|_____              |            |     ____|___     |    _________|______         
+ NP  |   |          AdjP           PP           |    |        NP   |   |               AdjP     
+ |   |   |      _____|____      ___|_____       |    |        |    |   |          ______|____    
+ N   V  Det   Adj         N    P         N     Conj  V        N    P  Det       Adj          N  
+ |   |   |     |          |    |         |      |    |        |    |   |         |           |   
+ i  had  a  country      walk  on     thursday and  came     home  in  a      dreadful      mess
+
+Noun Phrase Chunks
+i
+a country walk on thursday
+home
+a dreadful mess
+                                         S                                                      
+      ___________________________________|_________________________                              
+     |                                          |                  S                            
+     |                                          |          ________|_______                      
+     S                                          |         |                NP                   
+  ___|_________                                 |         |                |                     
+ |             VP                               |         |                PP                   
+ |    _________|__________                      |         |         _______|_____                
+ |   |                    NP                    |         |        |             NP             
+ |   |          __________|________             |         |        |             |               
+ |   |        DetP                 PP           |         VP       |            DetP            
+ |   |    _____|_____           ___|_____       |     ____|___     |    _________|______         
+ NP  |   |          AdjP       |         NP     |    |        NP   |   |               AdjP     
+ |   |   |      _____|____     |         |      |    |        |    |   |          ______|____    
+ N   V  Det   Adj         N    P         N     Conj  V        N    P  Det       Adj          N  
+ |   |   |     |          |    |         |      |    |        |    |   |         |           |   
+ i  had  a  country      walk  on     thursday and  came     home  in  a      dreadful      mess
+
+Noun Phrase Chunks
+i
+thursday
+home
+a dreadful mess
+-------------10-----------
+              S                                                                  
+  ____________|___________________________                                        
+ |                                        VP                                     
+ |    ____________________________________|____                                   
+ |   |                                         NP                                
+ |   |                _________________________|____________                      
+ |   |               |                                      PP                   
+ |   |               |                          ____________|____                 
+ |   |              DetP                       |                 NP              
+ |   |    ___________|____                     |        _________|___             
+ |   |   |               AdjP                  |       |             PP          
+ |   |   |     ___________|____                |       |          ___|___         
+ |   |   |    |               AdjP             |       |         |       NP      
+ |   |   |    |       _________|____           |       |         |       |        
+ NP  |   |    |      |             AdjP        |      DetP       |      DetP     
+ |   |   |    |      |          ____|_____     |    ___|____     |    ___|____    
+ N   V  Det  Adj    Adj       Adj         N    P  Det       N    P  Det       N  
+ |   |   |    |      |         |          |    |   |        |    |   |        |   
+ i  had  a  little moist      red       paint  in the      palm  of  my      hand
+
+Noun Phrase Chunks
+i
+my hand
