@@ -1,8 +1,8 @@
 import nltk
 import sys
 import os
-import string
-import math
+from string import punctuation
+from math import log
 
 FILE_MATCHES = 1
 SENTENCE_MATCHES = 1
@@ -51,7 +51,9 @@ def load_files(directory):
     Given a directory name, return a dictionary mapping the filename of each
     `.txt` file inside that directory to the file's contents as a string.
     """
+    # Create an empty dictionary 
     file_contents = dict() 
+    # Add filename as key and file content as value
     for path, dirs, files in os.walk(directory):
         for file in files:
             fd = open(os.path.join(path, file), "r")
@@ -69,11 +71,24 @@ def tokenize(document):
     punctuation or English stopwords.
     """
     strings = []
+    # Get all stopwords
     stopwords = nltk.corpus.stopwords.words("english")
+    # For each token check if the token is a stopword or special characters
     for token in nltk.word_tokenize(document):
-        if not (token in string.punctuation or token in stopwords):
-            strings.append(token.lower())
+        token = token.lower()
+        if not (is_special(token) or token in stopwords):
+            strings.append(token)
     return strings
+
+# Helper function
+def is_special(token):
+    """
+    Check if all the characters in the token are special characters.
+    """
+    for c in token:
+        if c not in punctuation:
+            return False
+    return True
 
 
 def compute_idfs(documents):
@@ -85,13 +100,14 @@ def compute_idfs(documents):
     resulting dictionary.
     """
     idfs = dict()
+    # Calculate idfs of each words. 
     for doc in documents:
         for word in documents[doc]:
             doc_con = 0
             for document in documents:
                 if word in documents[document]:
                     doc_con += 1
-            idfs[word] = math.log(len(documents) / doc_con)
+            idfs[word] = log(len(documents) / doc_con)
     return idfs
 
 
@@ -103,10 +119,13 @@ def top_files(query, files, idfs, n):
     files that match the query, ranked according to tf-idf.
     """
     tf_idfs = {file:0 for file in files}
+    # Calculate tf-idf of each file.
     for word in query:
         for file in files:
             tf = files[file].count(word)
             tf_idfs[file] += tf * idfs[word] 
+
+    # Sort according to the tf-idfs.
     tf_idfs = sorted(tf_idfs, key=lambda x: tf_idfs[x], reverse=True)
     return tf_idfs[0:n]
 
@@ -120,6 +139,7 @@ def top_sentences(query, sentences, idfs, n):
     be given to sentences that have a higher query term density.
     """
     sen_idfs = dict()
+    # Calculate matching word measure for every sentence.
     for word in query:
         for sentence in sentences:
             if word in sentences[sentence]:
@@ -128,22 +148,21 @@ def top_sentences(query, sentences, idfs, n):
                 else:
                     sen_idfs[sentence] = idfs[word]
 
+    # Sort according to the idfs.
     answers = sorted(sen_idfs, key=lambda x: sen_idfs[x], reverse=True)
 
-    for answer in answers[0:n+2]:
-        print(answer, sen_idfs[answer])
-
+    # If two sentences have same idfs.
     if sen_idfs[answers[0]] == sen_idfs[answers[1]]:
-        # If two sentences have same idfs.
         query_density = dict()
-        # Find higher "query term density" for n + 1 sentences.
+        # Find "query term density" for n + 1 sentences.
         for sentence in answers[0:n+1]:
             count = 0
-            for word in query:
-                if word in sentences[sentence]:
+            for word in sentences[sentence]:
+                if word in query:
                     count += 1
             query_density[sentence] = count / len(sentences[sentence])
 
+        # Sort according to the Query term density.
         answers = sorted(query_density, key=lambda x: query_density[x], reverse=True)
 
     return answers[0:n]
