@@ -47,17 +47,18 @@ the day before thursday
  |      ______________|___                       
  |     |                  NP                    
  |     |          ________|__________            
- |     |         |                   PP         
- |     |         |              _____|_____      
- NP    |        DetP           |           NP   
- |     |      ___|____         |           |     
+ |     |         NP                  NP         
+ |     |         |                   |           
+ NP    |        DetP                 PP         
+ |     |      ___|____          _____|_____      
  N     V    Det       N        P           N    
  |     |     |        |        |           |     
  we arrived the      day     before     thursday
 
 Noun Phrase Chunks
 we
-thursday
+the day
+before thursday
 -------------4------------
                         S                                      
              ___________|___________________________            
@@ -69,8 +70,6 @@ thursday
   |     |           |                      |        |           
   |     |           PP                     |        |          
   |     |    _______|___                   |        |           
-  |     |   |           NP                 |        |          
-  |     |   |           |                  |        |           
   |     |   |          DetP                |        S          
   |     |   |    _______|____              |     ___|_____      
   NP    |   |   |           AdjP           |    NP        VP   
@@ -81,7 +80,7 @@ holmes sat  in the     red       armchair and   he     chuckled
 
 Noun Phrase Chunks
 holmes
-the red armchair
+in the red armchair
 he
 -------------5------------
                      S                                  
@@ -117,38 +116,19 @@ holmes chuckled      to     himself
 Noun Phrase Chunks
 holmes
 to himself
-                 S                 
-   ______________|___               
-  |                  VP            
-  |        __________|___           
-  |       |              NP        
-  |       |              |          
-  |       |              PP        
-  |       |           ___|_____     
-  NP      |          |         NP  
-  |       |          |         |    
-  N       V          P         N   
-  |       |          |         |    
-holmes chuckled      to     himself
-
-Noun Phrase Chunks
-holmes
-himself
 -------------7------------
                                    S                                      
             _______________________|_____________                          
            |                       |             S                        
            |                       |     ________|_______                  
-           |                       |    |                VP               
-           |                       |    |             ___|_____________    
-           S                       |    |            VP                |  
-  _________|____                   |    |    ________|___              |   
- |              VP                 |    |   |            NP            |  
- |     _________|___               |    |   |            |             |   
- |    |             VP             |    |   |            PP            |  
- |    |     ________|___           |    |   |     _______|___          |   
- |    |    |            NP         |    |   |    |           NP        |  
- |    |    |            |          |    |   |    |           |         |   
+           S                       |    |                VP               
+  _________|____                   |    |             ___|_____________    
+ |              VP                 |    |            VP                |  
+ |     _________|___               |    |    ________|___              |   
+ |    |             VP             |    |   |            NP            |  
+ |    |     ________|___           |    |   |            |             |   
+ |    |    |            NP         |    |   |            PP            |  
+ |    |    |            |          |    |   |     _______|___          |   
  NP   |    |           DetP        |    NP  |    |          DetP       |  
  |    |    |         ___|____      |    |   |    |        ___|____     |   
  N   Adv   V       Det       N    Conj  N   V    P      Det       N   Adv 
@@ -159,7 +139,7 @@ Noun Phrase Chunks
 she
 a word
 we
-the door
+at the door
 -------------8------------
                      S                    
          ____________|________             
@@ -179,14 +159,12 @@ his pipe
 -------------9------------
                                          S                                                      
       ___________________________________|_________________________                              
-     |                                          |                  S                            
-     |                                          |          ________|_______                      
-     S                                          |         |                NP                   
-  ___|_________                                 |         |                |                     
- |             VP                               |         |                PP                   
- |    _________|__________                      |         |         _______|_____                
- |   |                    NP                    |         |        |             NP             
- |   |          __________|________             |         |        |             |               
+     S                                          |                  S                            
+  ___|_________                                 |          ________|_______                      
+ |             VP                               |         |                NP                   
+ |    _________|__________                      |         |                |                     
+ |   |                    NP                    |         |                PP                   
+ |   |          __________|________             |         |         _______|_____                
  |   |        DetP                 |            |         VP       |            DetP            
  |   |    _____|_____              |            |     ____|___     |    _________|______         
  NP  |   |          AdjP           PP           |    |        NP   |   |               AdjP     
@@ -199,45 +177,93 @@ Noun Phrase Chunks
 i
 a country walk on thursday
 home
-a dreadful mess
+in a dreadful mess
+                                         S                                                  
+      ___________________________________|_____________________                              
+     |                                          |              S                            
+     |                                          |     _________|___                          
+     S                                          |    |             NP                       
+  ___|_________                                 |    |     ________|___                      
+ |             VP                               |    |    |            NP                   
+ |    _________|__________                      |    |    |            |                     
+ |   |                    NP                    |    |    |            PP                   
+ |   |          __________|________             |    |    |     _______|_____                
+ |   |        DetP                 |            |    |    |    |            DetP            
+ |   |    _____|_____              |            |    |    |    |    _________|______         
+ NP  |   |          AdjP           PP           |    VP   NP   |   |               AdjP     
+ |   |   |      _____|____      ___|_____       |    |    |    |   |          ______|____    
+ N   V  Det   Adj         N    P         N     Conj  V    N    P  Det       Adj          N  
+ |   |   |     |          |    |         |      |    |    |    |   |         |           |   
+ i  had  a  country      walk  on     thursday and  came home  in  a      dreadful      mess
+
+Noun Phrase Chunks
+i
+a country walk on thursday
+home
+in a dreadful mess
                                          S                                                      
       ___________________________________|_________________________                              
-     |                                          |                  S                            
-     |                                          |          ________|_______                      
-     S                                          |         |                NP                   
-  ___|_________                                 |         |                |                     
- |             VP                               |         |                PP                   
- |    _________|__________                      |         |         _______|_____                
- |   |                    NP                    |         |        |             NP             
- |   |          __________|________             |         |        |             |               
- |   |        DetP                 PP           |         VP       |            DetP            
- |   |    _____|_____           ___|_____       |     ____|___     |    _________|______         
- NP  |   |          AdjP       |         NP     |    |        NP   |   |               AdjP     
- |   |   |      _____|____     |         |      |    |        |    |   |          ______|____    
+     S                                          |                  |                            
+  ___|_________                                 |                  |                             
+ |             VP                               |                  S                            
+ |    _________|__________                      |          ________|_______                      
+ |   |                    NP                    |         |                NP                   
+ |   |          __________|________             |         |                |                     
+ |   |         NP                  |            |         |                PP                   
+ |   |         |                   |            |         |         _______|_____                
+ |   |        DetP                 NP           |         VP       |            DetP            
+ |   |    _____|_____              |            |     ____|___     |    _________|______         
+ NP  |   |          AdjP           PP           |    |        NP   |   |               AdjP     
+ |   |   |      _____|____      ___|_____       |    |        |    |   |          ______|____    
  N   V  Det   Adj         N    P         N     Conj  V        N    P  Det       Adj          N  
  |   |   |     |          |    |         |      |    |        |    |   |         |           |   
  i  had  a  country      walk  on     thursday and  came     home  in  a      dreadful      mess
 
 Noun Phrase Chunks
 i
-thursday
+a country walk
+on thursday
 home
-a dreadful mess
+in a dreadful mess
+                                         S                                                  
+      ___________________________________|_____________________                              
+     S                                          |              S                            
+  ___|_________                                 |     _________|___                          
+ |             VP                               |    |             NP                       
+ |    _________|__________                      |    |     ________|___                      
+ |   |                    NP                    |    |    |            NP                   
+ |   |          __________|________             |    |    |            |                     
+ |   |         NP                  |            |    |    |            PP                   
+ |   |         |                   |            |    |    |     _______|_____                
+ |   |        DetP                 NP           |    |    |    |            DetP            
+ |   |    _____|_____              |            |    |    |    |    _________|______         
+ NP  |   |          AdjP           PP           |    VP   NP   |   |               AdjP     
+ |   |   |      _____|____      ___|_____       |    |    |    |   |          ______|____    
+ N   V  Det   Adj         N    P         N     Conj  V    N    P  Det       Adj          N  
+ |   |   |     |          |    |         |      |    |    |    |   |         |           |   
+ i  had  a  country      walk  on     thursday and  came home  in  a      dreadful      mess
+
+Noun Phrase Chunks
+i
+a country walk
+on thursday
+home
+in a dreadful mess
 -------------10-----------
               S                                                                  
   ____________|___________________________                                        
  |                                        VP                                     
  |    ____________________________________|____                                   
  |   |                                         NP                                
- |   |                _________________________|____________                      
- |   |               |                                      PP                   
- |   |               |                          ____________|____                 
- |   |              DetP                       |                 NP              
- |   |    ___________|____                     |        _________|___             
- |   |   |               AdjP                  |       |             PP          
- |   |   |     ___________|____                |       |          ___|___         
- |   |   |    |               AdjP             |       |         |       NP      
- |   |   |    |       _________|____           |       |         |       |        
+ |   |                          _______________|_____________________             
+ |   |                         NP                                    |           
+ |   |                _________|___________________                  |            
+ |   |              DetP                           |                 |           
+ |   |    ___________|____                         |                 |            
+ |   |   |               AdjP                      |                 NP          
+ |   |   |     ___________|____                    |                 |            
+ |   |   |    |               AdjP                 PP                PP          
+ |   |   |    |       _________|____            ___|___           ___|___         
  NP  |   |    |      |             AdjP        |      DetP       |      DetP     
  |   |   |    |      |          ____|_____     |    ___|____     |    ___|____    
  N   V  Det  Adj    Adj       Adj         N    P  Det       N    P  Det       N  
@@ -246,4 +272,57 @@ a dreadful mess
 
 Noun Phrase Chunks
 i
-my hand
+a little moist red paint in the palm
+of my hand
+              S                                                                  
+  ____________|___________________________                                        
+ |                                        VP                                     
+ |    ____________________________________|____                                   
+ |   |                                         NP                                
+ |   |                          _______________|_____________________             
+ |   |                         NP                                    |           
+ |   |                _________|___________________                  |            
+ |   |               NP                            |                 |           
+ |   |               |                             |                 |            
+ |   |              DetP                           |                 |           
+ |   |    ___________|____                         |                 |            
+ |   |   |               AdjP                      NP                NP          
+ |   |   |     ___________|____                    |                 |            
+ |   |   |    |               AdjP                 PP                PP          
+ |   |   |    |       _________|____            ___|___           ___|___         
+ NP  |   |    |      |             AdjP        |      DetP       |      DetP     
+ |   |   |    |      |          ____|_____     |    ___|____     |    ___|____    
+ N   V  Det  Adj    Adj       Adj         N    P  Det       N    P  Det       N  
+ |   |   |    |      |         |          |    |   |        |    |   |        |   
+ i  had  a  little moist      red       paint  in the      palm  of  my      hand
+
+Noun Phrase Chunks
+i
+a little moist red paint
+in the palm
+of my hand
+              S                                                                  
+  ____________|___________________________                                        
+ |                                        VP                                     
+ |    ____________________________________|____                                   
+ |   |                                         NP                                
+ |   |                _________________________|____________                      
+ |   |               NP                                     |                    
+ |   |               |                                      |                     
+ |   |              DetP                                    NP                   
+ |   |    ___________|____                          ________|________             
+ |   |   |               AdjP                      NP                NP          
+ |   |   |     ___________|____                    |                 |            
+ |   |   |    |               AdjP                 PP                PP          
+ |   |   |    |       _________|____            ___|___           ___|___         
+ NP  |   |    |      |             AdjP        |      DetP       |      DetP     
+ |   |   |    |      |          ____|_____     |    ___|____     |    ___|____    
+ N   V  Det  Adj    Adj       Adj         N    P  Det       N    P  Det       N  
+ |   |   |    |      |         |          |    |   |        |    |   |        |   
+ i  had  a  little moist      red       paint  in the      palm  of  my      hand
+
+Noun Phrase Chunks
+i
+a little moist red paint
+in the palm
+of my hand
